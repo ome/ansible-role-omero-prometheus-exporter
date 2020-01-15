@@ -1,0 +1,32 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: molecule/default/requirements.yml
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: omero-prometheus-exporter-c7
+    image: centos/systemd
+    command: /sbin/init
+    privileged: true
+    groups:
+      - docker-hosts
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    group_vars:
+      docker-hosts:
+        omero_server_systemd_require_network: false
+scenario:
+  name: default
+  converge_sequence:
+    - converge
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
