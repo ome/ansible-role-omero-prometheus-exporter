@@ -1,11 +1,22 @@
 ---
 # tasks file for omero-prometheus-exporter
 
-- name: omero prometheus exporter | install virtualenv package
-  become: yes
+# TODO: Move to a separate role?
+- name: omero prometheus exporter | install python3
+  become: true
   yum:
-    name: python-virtualenv
+    name: python36
     state: present
+
+- name: omero web | install python3
+  become: true
+  apt:
+    name:
+      - python3.6
+      - python3.6-distutils
+      - python3.6-venv
+    state: present
+  when: ansible_os_family == 'Debian'
 
 - name: omero prometheus exporter | create system user
   become: yes
@@ -17,11 +28,10 @@
 - name: omero prometheus exporter | install omero-prometheus-tools
   become: yes
   pip:
-    name: omero-prometheus-tools
-    version: "{{ omero_prometheus_tools_version }}"
+    name: "{{ omero_prometheus_tools_requirements }}"
     state: present
-    virtualenv: /opt/prometheus-omero-tools
-    virtualenv_site_packages: yes
+    virtualenv: /opt/prometheus-omero-tools/venv3
+    virtualenv_command: /usr/bin/python3 -mvenv
   notify:
   - restart prometheus-omero-exporter
 

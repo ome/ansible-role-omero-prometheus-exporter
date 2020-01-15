@@ -26,7 +26,7 @@ Optional:
 - `omero_prometheus_exporter_system_user`: System account for running services
 - `omero_prometheus_exporter_port`: Publish metrics on this port, default `9449`
 - `omero_prometheus_exporter_interval`: Calculate metrics at this interval, default 60 seconds
-- `omero_prometheus_exporter_counts_query_files`: List of query files for counts metrics, default is `[/opt/prometheus-omero-tools/etc/prometheus-omero-counts.yml]` which is included in omero-prometheus-tools
+- `omero_prometheus_exporter_counts_query_files`: List of query files for counts metrics, default is `[/opt/prometheus-omero-tools/venv3/etc/prometheus-omero-counts.yml]` which is included in omero-prometheus-tools
 
 
 Example playbook
