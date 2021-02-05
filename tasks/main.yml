@@ -51,6 +51,7 @@
   template:
     dest: /etc/systemd/system/prometheus-omero-exporter.service
     src: systemd-prometheus-omero-exporter-service.j2
+    mode: 0644
   notify:
     - restart prometheus-omero-exporter
 
