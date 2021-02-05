@@ -1,7 +1,7 @@
 OMERO Prometheus Exporter
 =========================
 
-[![Build Status](https://travis-ci.org/ome/ansible-role-omero-prometheus-exporter.svg)](https://travis-ci.org/ome/ansible-role-omero-prometheus-exporter)
+[![Actions Status](https://github.com/ome/ansible-role-omero-prometheus-exporter/workflows/Molecule/badge.svg)](https://github.com/ome/ansible-role-omero-prometheus-exporter/actions)
 [![Ansible Role](https://img.shields.io/ansible/role/41332.svg)](https://galaxy.ansible.com/ome/omero_prometheus_exporter/)
 
 OMERO Prometheus exporter.
