@@ -1,3 +1,5 @@
 ---
 - src: ome.postgresql
-- src: ome.omero_server
+- name: ome.omero_server
+  src: "https://github.com/ome/ansible-role-omero-server/\
+archive/57c50c79c3f04007bfb9edd747e61a82fb808b7c.tar.gz"
