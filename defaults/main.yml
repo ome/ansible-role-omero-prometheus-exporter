@@ -30,7 +30,7 @@ omero_prometheus_exporter_counts_query_files:
 ######################################################################
 
 # Prometheus component versions
-omero_prometheus_tools_version: 0.2.0
+omero_prometheus_tools_version: 0.2.2
 
 omero_prometheus_tools_requirements_ice_package:
   RedHat: "https://github.com/ome/zeroc-ice-py-centos7/releases/download/\

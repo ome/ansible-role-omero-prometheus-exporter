@@ -25,6 +25,14 @@
     state: present
     system: true
 
+- name: omero prometheus exporter | setup virtualenv3
+  become: true
+  pip:
+    name: "pip>=21"
+    state: present
+    virtualenv: /opt/prometheus-omero-tools/venv3
+    virtualenv_command: /usr/local/bin/ome-python3-virtualenv
+
 - name: omero prometheus exporter | install omero-prometheus-tools
   become: true
   pip:
