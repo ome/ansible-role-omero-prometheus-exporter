@@ -43,6 +43,18 @@
   notify:
     - restart prometheus-omero-exporter
 
+- name: omero prometheus exporter | delete Python 2 installation directories
+  become: true
+  file:
+    name: "/opt/prometheus-omero-tools/{{ item }}"
+    state: absent
+  with_items:
+    - bin
+    - etc
+    - include
+    - lib
+    - lib64
+
 - name: omero prometheus exporter | configure service
   become: true
   template:
