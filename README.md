@@ -4,12 +4,10 @@ OMERO Prometheus Exporter
 [![Actions Status](https://github.com/ome/ansible-role-omero-prometheus-exporter/workflows/Molecule/badge.svg)](https://github.com/ome/ansible-role-omero-prometheus-exporter/actions)
 [![Ansible Role](https://img.shields.io/ansible/role/41332.svg)](https://galaxy.ansible.com/ome/omero_prometheus_exporter/)
 
-OMERO Prometheus exporter.
-
 Configures services for exporting prometheus-compatible metrics from OMERO.server.
 Uses the OMERO API, so can be run remotely from OMERO.
 
-See https://github.com/IDR/omero-prometheus-tools
+See https://github.com/ome/omero-prometheus-tools
 
 Note: metric endpoints are not authenticated.
 
@@ -18,10 +16,13 @@ Role Variables
 --------------
 
 Required:
+
 - `omero_prometheus_exporter_omero_user`: OMERO user (a read-only light admin)
 - `omero_prometheus_exporter_omero_password`: OMERO user password
 
 Optional:
+
+- `omero_prometheus_tools_version`: version of the OMERO monitoring tool, default `0.2.3`
 - `omero_prometheus_exporter_omero_host`: OMERO server, default `localhost`
 - `omero_prometheus_exporter_system_user`: System account for running services
 - `omero_prometheus_exporter_port`: Publish metrics on this port, default `9449`
