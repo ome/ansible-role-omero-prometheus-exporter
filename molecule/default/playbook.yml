@@ -19,4 +19,4 @@
       omero_prometheus_exporter_omero_password: omero
 
   vars:
-    postgresql_version: "10"
+    postgresql_version: "11"
