@@ -43,5 +43,5 @@ omero_prometheus_tools_requirements:
   # TODO: make the use of our non-standard wheel optional
   - "{{ omero_prometheus_tools_requirements_ice_package[ansible_os_family] |
         default('zeroc-ice')}}"
-  - omero-py==5.6.0
+  - omero-py>=5.6.0
   - "omero-prometheus-tools=={{ omero_prometheus_tools_version }}"
