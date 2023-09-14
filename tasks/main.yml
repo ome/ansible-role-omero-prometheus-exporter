@@ -5,7 +5,9 @@
 - name: omero prometheus exporter | install python3
   become: true
   yum:
-    name: python38
+    name:
+      - centos-release-scl-rh
+      - rh-python38-python
     state: present
 
 - name: omero web | install python3
