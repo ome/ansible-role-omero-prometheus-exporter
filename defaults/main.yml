@@ -34,9 +34,9 @@ omero_prometheus_tools_version: 0.2.3
 
 omero_prometheus_tools_requirements_ice_package:
   RedHat: "https://github.com/ome/zeroc-ice-py-centos7/releases/download/\
-    0.2.1/zeroc_ice-3.6.5-cp36-cp36m-linux_x86_64.whl"
-  Debian: "https://github.com/ome/zeroc-ice-ubuntu1804/releases/download/\
-    0.2.0/zeroc_ice-3.6.5-cp36-cp36m-linux_x86_64.whl"
+    0.3.0/zeroc_ice-3.6.5-cp38-cp38-linux_x86_64.whl"
+  Debian: "https://github.com/ome/zeroc-ice-ubuntu2004/releases/download/\
+    0.2.0/zeroc_ice-3.6.5-cp38-cp38-linux_x86_64.whl"
 
 # List of python3 packages to install
 omero_prometheus_tools_requirements:

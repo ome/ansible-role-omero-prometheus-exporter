@@ -5,16 +5,16 @@
 - name: omero prometheus exporter | install python3
   become: true
   yum:
-    name: python36
+    name: python38
     state: present
 
 - name: omero web | install python3
   become: true
   apt:
     name:
-      - python3.6
-      - python3.6-distutils
-      - python3.6-venv
+      - python3.8
+      - python3.8-distutils
+      - python3.8-venv
     state: present
   when: ansible_os_family == 'Debian'
 
