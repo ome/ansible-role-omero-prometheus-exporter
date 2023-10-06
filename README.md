@@ -6,6 +6,7 @@ OMERO Prometheus Exporter
 
 Configures services for exporting prometheus-compatible metrics from OMERO.server.
 Uses the OMERO API, so can be run remotely from OMERO.
+Requires the OMERO.server to be configured with a certificate
 
 See https://github.com/ome/omero-prometheus-tools
 
