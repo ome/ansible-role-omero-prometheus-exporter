@@ -2,7 +2,7 @@ OMERO Prometheus Exporter
 =========================
 
 [![Actions Status](https://github.com/ome/ansible-role-omero-prometheus-exporter/workflows/Molecule/badge.svg)](https://github.com/ome/ansible-role-omero-prometheus-exporter/actions)
-[![Ansible Role](https://img.shields.io/ansible/role/41332.svg)](https://galaxy.ansible.com/ome/omero_prometheus_exporter/)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-omero_prometheus_exporter-blue.svg)](https://galaxy.ansible.com/ui/standalone/roles/ome/omero_prometheus_exporter/)
 
 Configures services for exporting prometheus-compatible metrics from OMERO.server.
 Uses the OMERO API, so can be run remotely from OMERO.
