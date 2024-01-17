@@ -49,6 +49,20 @@
     mode: 0440
   notify:
     - restart prometheus-omero-exporter
+  when: ansible_os_family == "RedHat"
+
+
+- name: omero prometheus exporter | configure service
+  become: true
+  template:
+    dest: /etc/prometheus-omero-exporter
+    src: sysconfig-prometheus-omero-exporter.j2
+    owner: "{{ omero_prometheus_exporter_system_user }}"
+    group: root
+    mode: 0440
+  notify:
+    - restart prometheus-omero-exporter
+  when: ansible_os_family == "Debian"
 
 - name: omero prometheus exporter | install service
   become: true
