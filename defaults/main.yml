@@ -47,8 +47,8 @@ omero_prometheus_tools_requirements:
   - "omero-prometheus-tools=={{ omero_prometheus_tools_version }}"
 
 environment_file_path:
-  RedHat: "-/etc/sysconfig/prometheus-omero-exporter"
-  Debian: "-/etc/prometheus-omero-exporter"
+  RedHat: "/etc/sysconfig/prometheus-omero-exporter"
+  Debian: "/etc/prometheus-omero-exporter"
 
 systemd_prometheus_omero_exporter_env_file_path: >-
   {{ environment_file_path[ansible_os_family] |
