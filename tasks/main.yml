@@ -72,17 +72,6 @@
     mode: 0644
   notify:
     - restart prometheus-omero-exporter
-  when: ansible_os_family == "RedHat"
-
-- name: omero prometheus exporter | install service
-  become: true
-  template:
-    dest: /etc/systemd/system/prometheus-omero-exporter.service
-    src: systemd-prometheus-omero-exporter-service-debian.j2
-    mode: 0644
-  notify:
-    - restart prometheus-omero-exporter
-  when: ansible_os_family == "Debian"
 
 - name: omero prometheus exporter | enable service
   become: true

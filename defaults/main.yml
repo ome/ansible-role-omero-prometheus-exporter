@@ -45,3 +45,11 @@ omero_prometheus_tools_requirements:
         default('zeroc-ice')}}"
   - omero-py>=5.18.0
   - "omero-prometheus-tools=={{ omero_prometheus_tools_version }}"
+
+environment_file_path:
+  RedHat: "-/etc/sysconfig/prometheus-omero-exporter"
+  Debian: "-/etc/prometheus-omero-exporter"
+
+systemd_prometheus_omero_exporter_env_file_path: >-
+  {{ environment_file_path[ansible_os_family] |
+      default('/etc')}}
