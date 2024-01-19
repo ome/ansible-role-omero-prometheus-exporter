@@ -33,15 +33,23 @@ omero_prometheus_exporter_counts_query_files:
 omero_prometheus_tools_version: 0.2.3
 
 omero_prometheus_tools_requirements_ice_package:
-  RedHat: "https://github.com/ome/zeroc-ice-py-centos7/releases/download/\
-    0.2.1/zeroc_ice-3.6.5-cp36-cp36m-linux_x86_64.whl"
-  Debian: "https://github.com/ome/zeroc-ice-ubuntu1804/releases/download/\
-    0.2.0/zeroc_ice-3.6.5-cp36-cp36m-linux_x86_64.whl"
+  RedHat: "https://github.com/glencoesoftware/zeroc-ice-py-rhel9-x86_64/releases/download/\
+      20230830/zeroc_ice-3.6.5-cp39-cp39-linux_x86_64.whl"
+  Debian: "https://github.com/glencoesoftware/zeroc-ice-py-ubuntu2204-x86_64/releases/download/\
+      20221004/zeroc_ice-3.6.5-cp310-cp310-linux_x86_64.whl"
 
 # List of python3 packages to install
 omero_prometheus_tools_requirements:
   # TODO: make the use of our non-standard wheel optional
   - "{{ omero_prometheus_tools_requirements_ice_package[ansible_os_family] |
         default('zeroc-ice')}}"
-  - omero-py>=5.13.0
+  - omero-py>=5.18.0
   - "omero-prometheus-tools=={{ omero_prometheus_tools_version }}"
+
+environment_file_path:
+  RedHat: "/etc/sysconfig/prometheus-omero-exporter"
+  Debian: "/etc/prometheus-omero-exporter"
+
+systemd_prometheus_omero_exporter_env_file_path: >-
+  {{ environment_file_path[ansible_os_family] |
+      default('/etc')}}

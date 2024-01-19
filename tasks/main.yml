@@ -2,22 +2,6 @@
 # tasks file for omero-prometheus-exporter
 
 # TODO: Move to a separate role?
-- name: omero prometheus exporter | install python3
-  become: true
-  yum:
-    name: python36
-    state: present
-
-- name: omero web | install python3
-  become: true
-  apt:
-    name:
-      - python3.6
-      - python3.6-distutils
-      - python3.6-venv
-    state: present
-  when: ansible_os_family == 'Debian'
-
 - name: omero prometheus exporter | create system user
   become: true
   user:
@@ -58,7 +42,7 @@
 - name: omero prometheus exporter | configure service
   become: true
   template:
-    dest: /etc/sysconfig/prometheus-omero-exporter
+    dest: "{{ systemd_prometheus_omero_exporter_env_file_path }}"
     src: sysconfig-prometheus-omero-exporter.j2
     owner: "{{ omero_prometheus_exporter_system_user }}"
     group: root
