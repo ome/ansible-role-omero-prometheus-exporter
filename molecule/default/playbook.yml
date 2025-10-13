@@ -7,6 +7,7 @@
       postgresql_install_server: true
       postgresql_databases:
         - name: omero
+          owner: omero
       postgresql_users:
         - user: omero
           password: omero
