@@ -23,6 +23,9 @@ Required:
 
 Optional:
 
+Python3:
+- `python_version`: Variable used in the `ansible-role-python3-virtualenv` and for the `omero_prometheus_tools_requirements_ice_package`. Use this variable for omero-server, omero-web and omero-prometheus-exporter to upgrade/downgrade the python version in the virtualenvs the server/web/prometheus-exporter are running in. Default is `"3.12"`. Supported versions are `"3.12"`, `"3.11"`.
+
 - `omero_prometheus_tools_version`: version of the OMERO monitoring tool, default `0.2.3`
 - `omero_prometheus_exporter_omero_host`: OMERO server, default `localhost`
 - `omero_prometheus_exporter_system_user`: System account for running services
