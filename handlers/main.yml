@@ -1,9 +1,9 @@
 ---
 # handlers file for omero-prometheus-exporter
 
-- name: restart prometheus-omero-exporter
+- name: Restart prometheus-omero-exporter
   become: true
-  systemd:
+  ansible.builtin.systemd_service:
     daemon_reload: true
     enabled: true
     name: prometheus-omero-exporter

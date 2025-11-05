@@ -2,35 +2,35 @@
 # tasks file for omero-prometheus-exporter
 
 # TODO: Move to a separate role?
-- name: omero prometheus exporter | create system user
+- name: Omero prometheus exporter | create system user
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ omero_prometheus_exporter_system_user }}"
     state: present
     system: true
 
-- name: omero prometheus exporter | setup virtualenv3
+- name: Omero prometheus exporter | setup virtualenv3
   become: true
-  pip:
+  ansible.builtin.pip:
     name: "pip>=21"
     state: present
-    virtualenv: /opt/prometheus-omero-tools/venv3
-    virtualenv_command: /usr/local/bin/ome-python3-virtualenv
+    virtualenv: "{{ omero_prometheus_exporter_venvdir }}"
+    virtualenv_command: "{{ omero_prometheus_exporter_virtualenv_bin }}"
 
-- name: omero prometheus exporter | install omero-prometheus-tools
+- name: Omero prometheus exporter | install omero-prometheus-tools
   become: true
-  pip:
+  ansible.builtin.pip:
     name: "{{ omero_prometheus_tools_requirements }}"
     state: present
-    virtualenv: /opt/prometheus-omero-tools/venv3
+    virtualenv: "{{ omero_prometheus_exporter_venvdir }}"
     virtualenv_command: /usr/bin/python3 -mvenv
   notify:
-    - restart prometheus-omero-exporter
+    - Restart prometheus-omero-exporter
 
-- name: omero prometheus exporter | delete Python 2 installation directories
+- name: Omero prometheus exporter | delete Python 2 installation directories
   become: true
-  file:
-    name: "/opt/prometheus-omero-tools/{{ item }}"
+  ansible.builtin.file:
+    name: "{{ omero_prometheus_exporter_venvdir }}/../{{ item }}"
     state: absent
   with_items:
     - bin
@@ -39,29 +39,29 @@
     - lib
     - lib64
 
-- name: omero prometheus exporter | configure service
+- name: Omero prometheus exporter | configure service
   become: true
-  template:
+  ansible.builtin.template:
     dest: "{{ systemd_prometheus_omero_exporter_env_file_path }}"
     src: sysconfig-prometheus-omero-exporter.j2
     owner: "{{ omero_prometheus_exporter_system_user }}"
     group: root
-    mode: 0440
+    mode: "0440"
   notify:
-    - restart prometheus-omero-exporter
+    - Restart prometheus-omero-exporter
 
-- name: omero prometheus exporter | install service
+- name: Omero prometheus exporter | install service
   become: true
-  template:
+  ansible.builtin.template:
     dest: /etc/systemd/system/prometheus-omero-exporter.service
     src: systemd-prometheus-omero-exporter-service.j2
-    mode: 0644
+    mode: "0644"
   notify:
-    - restart prometheus-omero-exporter
+    - Restart prometheus-omero-exporter
 
-- name: omero prometheus exporter | enable service
+- name: Omero prometheus exporter | enable service
   become: true
-  systemd:
+  ansible.builtin.systemd_service:
     daemon_reload: true
     enabled: true
     name: prometheus-omero-exporter
