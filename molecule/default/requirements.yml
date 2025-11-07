@@ -1,9 +1,7 @@
 ---
 # Remove when the requirements are released !
-# - src: ome.postgresql
-- name: postgresql
-  src: https://github.com/pwalczysko/ansible-role-postgresql
-  version: p312
+- src: ome.postgresql
+
 # - src: ome.omero_server
 - name: omero_server
   src: https://github.com/pwalczysko/ansible-role-omero-server
