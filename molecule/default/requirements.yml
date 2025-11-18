@@ -1,8 +1,4 @@
 ---
-# Remove when the requirements are released !
-- src: ome.postgresql
 
-# - src: ome.omero_server
-- name: omero_server
-  src: https://github.com/pwalczysko/ansible-role-omero-server
-  version: pythonvers-symlink-in-virtualenvrole
+- src: ome.postgresql
+- src: ome.omero_server

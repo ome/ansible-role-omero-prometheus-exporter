@@ -13,7 +13,7 @@
           password: omero
           databases: [omero]
 
-    - role: omero_server
+    - role: ome.omero_server
       omero_server_selfsigned_certificates: true
 
     - role: ome.omero_prometheus_exporter
